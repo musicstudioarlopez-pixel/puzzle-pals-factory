@@ -39,6 +39,7 @@ export const Route = createFileRoute("/")({
 });
 
 const categories = [
+  { name: "Brinquedos Educativos", img: educativos, tag: "Jogo da Memória" },
   { name: "Histórias Bíblicas", img: biblicas, tag: "Evangélico" },
   { name: "Turma da Mônica", img: monica, tag: "Clássico BR" },
   { name: "Mundo Bita", img: bita, tag: "Infantil" },
