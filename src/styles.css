@@ -152,5 +152,31 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fredoka', 'Nunito', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-gradient-fun { background: var(--gradient-fun); }
+  .bg-gradient-sun { background: var(--gradient-sun); }
+  .shadow-pop { box-shadow: var(--shadow-pop); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+}
+
+@keyframes wiggle {
+  0%,100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+@keyframes float-y {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-wiggle { animation: wiggle 3s ease-in-out infinite; }
+.animate-float { animation: float-y 5s ease-in-out infinite; }
