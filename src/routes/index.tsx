@@ -100,7 +100,7 @@ function Index() {
               Quebra-cabeças que <span className="text-primary">despertam</span> a imaginação.
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
-              Somos a <strong className="text-foreground">ARL Toys</strong>, fábrica de quebra-cabeças infantis e educativos. Preços especiais para revendedores, lojistas e papelarias em todo o Brasil.
+              Somos a <strong className="text-foreground">ARL Toys</strong>, fábrica de quebra-cabeças infantis e educativos. Preços especiais para revendedores, lojistas de todo o Brasil.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={WHATS} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-bold shadow-pop hover:translate-y-[-2px] transition">
@@ -200,7 +200,7 @@ function Index() {
               <Spec icon={<Ruler className="w-5 h-5" />} t="Dimensões" v="32 × 44 cm" />
               <Spec icon={<Puzzle className="w-5 h-5" />} t="Quantidade" v="35 peças*" />
               <Spec icon={<Layers className="w-5 h-5" />} t="Material" v="Triplex 450g revestido" />
-              <Spec icon={<BadgeCheck className="w-5 h-5" />} t="Idade" v="A partir de 3 anos" />
+              <Spec icon={<BadgeCheck className="w-5 h-5" />} t="Idade" v="A partir de 1 ano" />
             </div>
             <p className="mt-5 text-xs text-background/50">*Turma da Mônica: 30 peças. Demais coleções: 35 peças.</p>
           </div>
@@ -244,8 +244,9 @@ function Index() {
 
       {/* CONTATO */}
       <section id="contato" className="pb-24">
-        <div className="mx-auto max-w-7xl px-5 grid md:grid-cols-3 gap-5">
+        <div className="mx-auto max-w-7xl px-5 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           <ContactCard icon={<MessageCircle className="w-6 h-6" />} title="WhatsApp" lines={["(11) 96810-6611", "Resposta rápida"]} href={WHATS} cta="Abrir conversa" />
+          <ContactCard icon={<MessageCircle className="w-6 h-6" />} title="WhatsApp 2" lines={["(11) 94979-5007", "Resposta rápida"]} href="https://wa.me/5511949795007?text=Olá!%20Quero%20saber%20mais%20sobre%20os%20quebra-cabeças%20no%20atacado." cta="Abrir conversa" />
           <ContactCard icon={<Mail className="w-6 h-6" />} title="E-mail" lines={["arltoysfabrica@gmail.com", "Pedidos e orçamentos"]} href="mailto:arltoysfabrica@gmail.com" cta="Enviar mensagem" />
           <ContactCard icon={<Phone className="w-6 h-6" />} title="Telefone" lines={["+55 11 96810-6611", "Seg a Sex • 9h às 18h"]} href="tel:+5511968106611" cta="Ligar agora" />
         </div>
