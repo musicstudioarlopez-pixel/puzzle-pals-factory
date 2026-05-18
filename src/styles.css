@@ -63,25 +63,37 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1.25rem;
+  /* ARL Toys - paleta brinquedo: cereja, amarelo sol, azul céu, verde */
+  --background: oklch(0.99 0.012 95);
+  --foreground: oklch(0.22 0.06 270);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.22 0.06 270);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: oklch(0.22 0.06 270);
+  --primary: oklch(0.62 0.23 25);       /* cereja vibrante */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.65 0.19 245);    /* azul céu */
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.96 0.02 90);
+  --muted-foreground: oklch(0.45 0.04 270);
+  --accent: oklch(0.85 0.18 95);        /* amarelo sol */
+  --accent-foreground: oklch(0.22 0.06 270);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.03 90);
+  --input: oklch(0.9 0.03 90);
+  --ring: oklch(0.62 0.23 25);
+
+  --brand-cherry: oklch(0.62 0.23 25);
+  --brand-sun: oklch(0.85 0.18 95);
+  --brand-sky: oklch(0.65 0.19 245);
+  --brand-grass: oklch(0.7 0.17 145);
+  --brand-pink: oklch(0.75 0.18 0);
+  --gradient-fun: linear-gradient(135deg, oklch(0.62 0.23 25) 0%, oklch(0.75 0.18 0) 50%, oklch(0.65 0.19 245) 100%);
+  --gradient-sun: linear-gradient(135deg, oklch(0.85 0.18 95) 0%, oklch(0.78 0.2 60) 100%);
+  --shadow-pop: 0 10px 0 -2px oklch(0.22 0.06 270 / 0.12), 0 20px 40px -10px oklch(0.62 0.23 25 / 0.35);
+  --shadow-card: 0 8px 0 -2px oklch(0.22 0.06 270 / 0.08), 0 12px 30px -10px oklch(0.22 0.06 270 / 0.2);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +152,31 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fredoka', 'Nunito', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-gradient-fun { background: var(--gradient-fun); }
+  .bg-gradient-sun { background: var(--gradient-sun); }
+  .shadow-pop { box-shadow: var(--shadow-pop); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+}
+
+@keyframes wiggle {
+  0%,100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+@keyframes float-y {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-wiggle { animation: wiggle 3s ease-in-out infinite; }
+.animate-float { animation: float-y 5s ease-in-out infinite; }
