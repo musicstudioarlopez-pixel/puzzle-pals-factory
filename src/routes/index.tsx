@@ -18,6 +18,7 @@ import barbie from "@/assets/categories/barbie.jpg";
 import princesas from "@/assets/categories/princesas.jpg";
 import bob from "@/assets/categories/bob.jpg";
 import stitch from "@/assets/categories/stitch.jpg";
+import educativos from "@/assets/categories/educativos.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
