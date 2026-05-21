@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Puzzle, Sparkles, Truck, BadgeCheck, Phone, Mail, MessageCircle, Ruler, Layers, ShieldCheck, ArrowRight } from "lucide-react";
+import { CategoryModal } from "@/components/CategoryModal";
 
 import hero from "@/assets/categories/hero.jpg";
 import copa from "@/assets/categories/copa.jpg";
@@ -19,6 +21,7 @@ import princesas from "@/assets/categories/princesas.jpg";
 import bob from "@/assets/categories/bob.jpg";
 import stitch from "@/assets/categories/stitch.jpg";
 import educativos from "@/assets/categories/educativos.jpg";
+import logoImg from "@/assets/logo.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -42,11 +45,11 @@ const categories = [
   { name: "Brinquedos Educativos", img: educativos, tag: "Jogo da Memória" },
   { name: "Histórias Bíblicas", img: biblicas, tag: "Evangélico" },
   { name: "Turma da Mônica", img: monica, tag: "Clássico BR" },
-  { name: "Mundo Bita", img: bita, tag: "Infantil" },
+  { name: "Mundo Bita", img: "https://i.imgur.com/67uJLCx.jpg", tag: "Infantil" },
   { name: "Princesas", img: princesas, tag: "Disney" },
   { name: "Frozen", img: frozen, tag: "Disney" },
   { name: "Barbie", img: barbie, tag: "Meninas" },
-  { name: "Sonic", img: sonic, tag: "Aventura" },
+  { name: "Sonic", img: "https://i.imgur.com/zuZNobz.jpg", tag: "Aventura" },
   { name: "Super Mario", img: mario, tag: "Game" },
   { name: "Marvel", img: marvel, tag: "Heróis" },
   { name: "McQueen", img: mcqueen, tag: "Carros" },
@@ -61,19 +64,14 @@ const categories = [
 const WHATS = "https://wa.me/5511968106611?text=Olá!%20Quero%20saber%20mais%20sobre%20os%20quebra-cabeças%20no%20atacado.";
 
 function Index() {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
       <header className="sticky top-0 z-40 backdrop-blur bg-background/80 border-b border-border">
         <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-fun grid place-items-center shadow-pop">
-              <Puzzle className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-bold text-lg" style={{ fontFamily: "Fredoka" }}>ARL Toys</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">A fábrica da diversão</div>
-            </div>
+            <img src={logoImg} alt="ARL Toys" className="h-12 w-auto object-contain drop-shadow-sm" />
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-semibold">
             <a href="#colecoes" className="hover:text-primary transition">Coleções</a>
@@ -164,7 +162,15 @@ function Index() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {categories.map((c) => (
-              <div key={c.name} className="group relative rounded-3xl overflow-hidden bg-card shadow-card hover:shadow-pop transition hover:-translate-y-1">
+              <div
+                key={c.name}
+                role="button"
+                tabIndex={0}
+                aria-label={`Ver coleção ${c.name}`}
+                onClick={() => setActiveCategory(c.name)}
+                onKeyDown={(e) => e.key === "Enter" && setActiveCategory(c.name)}
+                className="group relative rounded-3xl overflow-hidden bg-card shadow-card hover:shadow-pop transition hover:-translate-y-1 cursor-pointer"
+              >
                 <div className="aspect-[4/5] overflow-hidden bg-muted">
                   <img src={c.img} alt={`Quebra-cabeça ${c.name}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                 </div>
@@ -173,9 +179,9 @@ function Index() {
                 </div>
                 <div className="p-4 flex items-center justify-between">
                   <h3 className="font-bold text-base" style={{ fontFamily: "Fredoka" }}>{c.name}</h3>
-                  <a href={WHATS} target="_blank" rel="noreferrer" aria-label={`Pedir ${c.name}`} className="w-9 h-9 rounded-full bg-primary text-primary-foreground grid place-items-center hover:scale-110 transition">
+                  <span aria-hidden className="w-9 h-9 rounded-full bg-primary text-primary-foreground grid place-items-center group-hover:scale-110 transition">
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </span>
                 </div>
               </div>
             ))}
@@ -202,7 +208,7 @@ function Index() {
               <Spec icon={<Layers className="w-5 h-5" />} t="Material" v="Triplex 450g revestido" />
               <Spec icon={<BadgeCheck className="w-5 h-5" />} t="Idade" v="A partir de 1 ano" />
             </div>
-            <p className="mt-5 text-xs text-background/50">*Turma da Mônica: 30 peças. Demais coleções: 35 peças.</p>
+            <p className="mt-5 text-xs text-background/50">*Todas as coleções possuem 35 peças, exceto o Jogo da Memória.</p>
           </div>
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
@@ -255,15 +261,14 @@ function Index() {
       {/* FOOTER */}
       <footer className="border-t border-border bg-card">
         <div className="mx-auto max-w-7xl px-5 py-10 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-fun grid place-items-center">
-              <Puzzle className="w-4 h-4 text-primary-foreground" />
-            </div>
+          <div className="flex items-center gap-3">
+            <img src={logoImg} alt="ARL Toys" className="h-8 w-auto object-contain drop-shadow-sm" />
             <span><strong className="text-foreground">ARL Toys</strong> — A fábrica da diversão</span>
           </div>
           <span>© {new Date().getFullYear()} ARL Toys. Todos os direitos reservados.</span>
         </div>
       </footer>
+      <CategoryModal category={activeCategory} onClose={() => setActiveCategory(null)} />
     </div>
   );
 }
