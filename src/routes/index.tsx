@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "ARL Toys — Fábrica de Quebra-Cabeças Infantis no Atacado" },
-      { name: "description", content: "Fabricante de quebra-cabeças educativos infantis. Venda no atacado a partir de R$ 2,50/un para revenda. Histórias Bíblicas, Princesas, Sonic, Bob Esponja, Turma da Mônica, Mundo Bita e mais." },
+      { name: "description", content: "Fabricante de quebra-cabeças educativos infantis. Venda no atacado a partir de R$ 4,00/un para revenda. Histórias Bíblicas, Princesas, Sonic, Bob Esponja, Turma da Mônica, Mundo Bita e mais." },
       { property: "og:title", content: "ARL Toys — A Fábrica da Diversão" },
       { property: "og:description", content: "Quebra-cabeças infantis no atacado: preços especiais para revenda." },
       { property: "og:type", content: "website" },
@@ -109,7 +109,7 @@ function Index() {
               </a>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 text-sm">
-              <Stat n="R$ 2,50" l="por unidade*" />
+              <Stat n="R$ 5,00" l="a unidade" />
               <Stat n="16+" l="coleções" />
               <Stat n="450g" l="cartão triplex" />
             </div>
@@ -231,7 +231,7 @@ function Index() {
               Condição especial
             </span>
             <h2 className="mt-4 text-4xl md:text-6xl font-extrabold text-balance" style={{ fontFamily: "Fredoka" }}>
-              R$ 2,50 por unidade<br/>em pedidos a partir de 100 un.
+              R$ 4,00 por unidade<br/>a partir de 1000 unidades
             </h2>
             <p className="mt-5 max-w-xl text-primary-foreground/90 text-lg">
               Monte um mix das coleções e turbine as vendas da sua loja com produtos de alta qualidade e licenças que as crianças reconhecem.
